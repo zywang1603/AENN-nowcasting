@@ -1,7 +1,11 @@
 # AENN-nowcasting (This file is still under improvement)
 Extreme-value Neural Networks for Weather Forecasting  
 
-If you want to run this code, you can change the paths in [config.py](https://github.com/zywang1603/AENN-nowcasting/blob/master/precipitation_forecasting/config.py), and then run [testrun0401.py](https://github.com/zywang1603/AENN-nowcasting/blob/master/precipitation_forecasting/testrun0401.py)
+If you want to run this code, you can change the paths in [config.py](https://github.com/zywang1603/AENN-nowcasting/blob/master/precipitation_forecasting/config.py)
+
+Also, you need to change the paths of GPD files in [batchcreator.py](https://github.com/zywang1603/AENN-nowcasting/blob/master/precipitation_forecasting/batchcreator.py)
+
+Then you can run [testrun0401.py](https://github.com/zywang1603/AENN-nowcasting/blob/master/precipitation_forecasting/testrun0401.py)  to train the model.
 
 Training Process:  
 
@@ -12,4 +16,6 @@ Validation set: 362 extreme events in 2018
 Testing set: 657 extreme events in the whole available area from 2019 to 2021  
 
 Stop running: When the validation reconstruction loss does not improve in 15 epoches.  
+
+
 
