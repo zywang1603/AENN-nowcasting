@@ -6,12 +6,6 @@ import matplotlib.pyplot as plt
 from batchcreator import minmax, dbz_to_r, DataGenerator
 import batchcreator
 
-#u = 5.279999894124263
-#delta = 2.2013348152789725
-#e = 0.6757364098181671
-#u = 0
-#delta = 1
-#e = 1
 
 class ImageLogger(tf.keras.callbacks.Callback):
     '''
