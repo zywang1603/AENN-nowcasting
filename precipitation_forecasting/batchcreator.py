@@ -205,8 +205,8 @@ class DataGenerator(keras.utils.Sequence):
             X =  tf.convert_to_tensor([tf.image.resize(x, (256, 256)) for x in X])
             y =  tf.convert_to_tensor([tf.image.resize(y_i, (256, 256)) for y_i in y])
 
-            # X = X * 10
-            # y = y * 10
+            X = X * 10
+            y = y * 10
 
 
         return X, y
@@ -365,7 +365,7 @@ def undo_prep(x, norm_method=None, r_to_dbz=False, downscale256=True, resize_met
         # undo normalization
         #gpd
         x = x.numpy()
-        #x = x / 10
+        x = x / 10
 
         # gpd NN
         for i in range(N):
