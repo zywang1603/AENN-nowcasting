@@ -26,7 +26,7 @@ Training set: 40,000 events selected from rainy events between 2008-2017  [NL_2
 
 Validation set: 362 extreme events in 2018  [NL_extreme.npy](https://github.com/zywang1603/AENN-nowcasting/blob/master/precipitation_forecasting/datasets/NL_extreme.npy)
 
-Testing set: 657 extreme events in the whole available area from 2019 to 2021  
+Testing set: 657 extreme events in the whole available area from 2019 to 2021  [NL_test.npy](https://github.com/zywang1603/AENN-nowcasting/blob/master/precipitation_forecasting/datasets/NL_test.npy)
 
 Stop running: When the validation reconstruction loss does not improve in 15 epoches.  
 
