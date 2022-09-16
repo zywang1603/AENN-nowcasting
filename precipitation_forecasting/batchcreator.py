@@ -14,6 +14,7 @@ from pysteps.io import archive, read_timeseries, get_method
 from datetime import datetime
 
 # N is a global parameter. Each image is divided to N*N parts, and we fit each part with a separate set of GPD parameters.
+# In my thesis, N=4. You can choose other numbers if you like. e.g. 2, 5, 8, 11....
 N=4
 
 calibration = int(440/N)
@@ -23,10 +24,13 @@ if N<10:
     gpd_par = np.load("/home/zhiyiwang/code_gru_0414/precipitation-nowcasting-using-GANs/precipitation_forecasting/datasets/gpd_"+str(N)+str(N)+".npy", allow_pickle=True)
 else:
     gpd_par = np.load("/home/zhiyiwang/code_gru_0414/precipitation-nowcasting-using-GANs/precipitation_forecasting/datasets/gpd_" + str(N) + ".npy", allow_pickle=True)
+# Three gpd parameters
 gpd_u = gpd_par[0]
 gpd_delta = gpd_par[1]
 gpd_e = gpd_par[2]
 
+
+# Inverse gpd normalization
 def inv_gpd(y,u=0,delta=1,e=1):
     th = 10     # GPD threshold, unit: mm/h, you can change the value.
     k = (1 - ((1 + e * ((th - u) / delta)) ** (- 1 / e))) / th
@@ -34,12 +38,15 @@ def inv_gpd(y,u=0,delta=1,e=1):
     x = np.piecewise(y, [y <= th_val, y > th_val],[lambda v: 1 / k * v, lambda v: u + (delta / e) * ((1 / (1 - v)) ** e - 1)])
     return x
 
+# GPD normalization
 def gpd(x, u=0, delta=1, e=1):
     th = 10
     k = (1 - ((1 + e * ((th - u) / delta)) ** (- 1 / e))) / th
     y = np.piecewise(x, [x <= th, x > th],[lambda v: k * v, lambda v: 1 - ((1 + e * ((v - u) / delta)) ** (- 1 / e))])
     return y
 
+
+# Generate the data.
 class DataGenerator(keras.utils.Sequence):
     'Generates data for Keras'
     def __init__(self, list_IDs, batch_size=32, x_seq_size=6, 
