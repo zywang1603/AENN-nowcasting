@@ -20,6 +20,22 @@ Also, you need to change the paths of GPD files in [batchcreator.py](https://git
 
 Then you can run [testrun0401.py](https://github.com/zywang1603/AENN-nowcasting/blob/master/precipitation_forecasting/testrun0401.py)  to train the model. In this file, you can change the training settings.
 
+If you want to visualize your results, you can run [visualization.py](https://github.com/zywang1603/AENN-nowcasting/blob/master/precipitation_forecasting/visualization.py)
+
+If you want to expand your verification to catchments, you can project images with catchment shapefiles. Alternatively, you can directly project with catchment coordinates. 
+
+For the four catchments I verify in my thesis, the coordinates in original 765*700 images are:
+
+Aa: [467:515 , 386:431]
+
+Delfland: [432:457 , 296:322]
+
+Hupsel: [421:424 , 473:476]
+
+Regge: [371:410 , 450:494]
+
+
+
 Training Process:  
 
 Training set: 40,000 events selected from rainy events between 2008-2017  [NL_2008-2017.npy](https://github.com/zywang1603/AENN-nowcasting/blob/master/precipitation_forecasting/datasets/NL_2008-2017.npy)
